@@ -1,11 +1,10 @@
 import { Controller, useFormContext } from "react-hook-form";
+import { useTranslation } from "react-i18next";
+import { Form } from "antd";
 
 import Input from "../Input/Input";
 import Password from "../Input/Password";
-import Label from "../Input/Label";
 import ErrorMessage from "../Input/ErrorMessage";
-import { useTranslation } from "react-i18next";
-import NavButton from "../molecules/NavButton";
 
 const AccountInformation = () => {
   const { t } = useTranslation();
@@ -18,7 +17,15 @@ const AccountInformation = () => {
 
   return (
     <>
-      <Label label={t("form.page.3.field.1")} name={"username"}>
+      <Form.Item
+        label={t("form.page.3.field.1")}
+        name={"username"}
+        extra={
+          errors.username && (
+            <ErrorMessage>{`${errors.username.message}`}</ErrorMessage>
+          )
+        }
+      >
         <Controller
           name="username"
           control={control}
@@ -31,12 +38,18 @@ const AccountInformation = () => {
             />
           )}
         />
-        {errors.username && (
-          <ErrorMessage>{`${errors.username.message}`}</ErrorMessage>
-        )}
-      </Label>
+      </Form.Item>
 
-      <Label label={t("form.page.3.field.2")} name={"password"}>
+      <Form.Item
+        label={t("form.page.3.field.2")}
+        name={"password"}
+        extra={
+          errors.password &&
+          Object.entries(errors.password.types || {}).map(([type, message]) => (
+            <ErrorMessage key={type}>{message}</ErrorMessage>
+          ))
+        }
+      >
         <Controller
           name="password"
           control={control}
@@ -63,12 +76,17 @@ const AccountInformation = () => {
             />
           )}
         />
-        {errors.password && (
-          <ErrorMessage>{`${errors.password.message}`}</ErrorMessage>
-        )}
-      </Label>
+      </Form.Item>
 
-      <Label label={t("form.page.3.field.3")} name={"rePassword"}>
+      <Form.Item
+        label={t("form.page.3.field.3")}
+        name={"rePassword"}
+        extra={
+          errors.rePassword && (
+            <ErrorMessage>{`${errors.rePassword.message}`}</ErrorMessage>
+          )
+        }
+      >
         <Controller
           name="rePassword"
           control={control}
@@ -87,10 +105,7 @@ const AccountInformation = () => {
             />
           )}
         />
-        {errors.rePassword && (
-          <ErrorMessage>{`${errors.rePassword.message}`}</ErrorMessage>
-        )}
-      </Label>
+      </Form.Item>
     </>
   );
 };

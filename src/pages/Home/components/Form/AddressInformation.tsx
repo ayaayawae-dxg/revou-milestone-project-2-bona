@@ -1,13 +1,13 @@
 import { Controller, useFormContext } from "react-hook-form";
+import { useTranslation } from "react-i18next";
+import { Form } from "antd";
 
 import { STATE_CITY } from "utils/constant";
 
 import TextArea from "../Input/TextArea";
 import Select from "../Input/Select";
 import Input from "../Input/Input";
-import Label from "../Input/Label";
 import ErrorMessage from "../Input/ErrorMessage";
-import { useTranslation } from "react-i18next";
 
 const AddressInformation = () => {
   const {
@@ -20,7 +20,15 @@ const AddressInformation = () => {
 
   return (
     <>
-      <Label label={t("form.page.2.field.1")} name={"streetAddress"}>
+      <Form.Item
+        label={t("form.page.2.field.1")}
+        name={"streetAddress"}
+        extra={
+          errors.streetAddress && (
+            <ErrorMessage>{`${errors.streetAddress.message}`}</ErrorMessage>
+          )
+        }
+      >
         <Controller
           name="streetAddress"
           control={control}
@@ -33,12 +41,17 @@ const AddressInformation = () => {
             />
           )}
         />
-        {errors.streetAddress && (
-          <ErrorMessage>{`${errors.streetAddress.message}`}</ErrorMessage>
-        )}
-      </Label>
+      </Form.Item>
 
-      <Label label={t("form.page.2.field.2")} name={"state"}>
+      <Form.Item
+        label={t("form.page.2.field.2")}
+        name={"state"}
+        extra={
+          errors.state && (
+            <ErrorMessage>{`${errors.state.message}`}</ErrorMessage>
+          )
+        }
+      >
         <Controller
           name="state"
           control={control}
@@ -55,42 +68,57 @@ const AddressInformation = () => {
               onChange={(e) => {
                 onChange(e);
                 setValue("city", null);
+                setValue("zipCode", null);
               }}
             />
           )}
         />
-        {errors.state && (
-          <ErrorMessage>{`${errors.state.message}`}</ErrorMessage>
-        )}
-      </Label>
+      </Form.Item>
 
-      <Label label={t("form.page.2.field.3")} name="city">
+      <Form.Item
+        label={t("form.page.2.field.3")}
+        name="city"
+        extra={
+          errors.city && <ErrorMessage>{`${errors.city.message}`}</ErrorMessage>
+        }
+      >
         <Controller
           name="city"
           control={control}
           rules={{ required: t("form.page.2.field.3.required") }}
-          render={({ field: { ref, name, ...field } }) => (
+          render={({ field: { ref, onChange, name, ...field } }) => (
             <Select
               {...field}
               options={
                 watch("state")
                   ? STATE_CITY[watch("state") as keyof typeof STATE_CITY].map(
-                      (city) => ({
-                        label: city,
-                        value: city,
-                      })
-                    )
+                    (city) => ({
+                      label: city,
+                      value: city,
+                    })
+                  )
                   : []
               }
               placeholder={t("form.page.2.field.3")}
+              onChange={(e) => {
+                onChange(e);
+                setValue("zipCode", null);
+              }}
               name={name}
             />
           )}
         />
-        {errors.city && <ErrorMessage>{`${errors.city.message}`}</ErrorMessage>}
-      </Label>
+      </Form.Item>
 
-      <Label label={t("form.page.2.field.4")} name={"zipCode"}>
+      <Form.Item
+        label={t("form.page.2.field.4")}
+        name={"zipCode"}
+        extra={
+          errors.zipCode && (
+            <ErrorMessage>{`${errors.zipCode.message}`}</ErrorMessage>
+          )
+        }
+      >
         <Controller
           name="zipCode"
           control={control}
@@ -109,10 +137,7 @@ const AddressInformation = () => {
             />
           )}
         />
-        {errors.zipCode && (
-          <ErrorMessage>{`${errors.zipCode.message}`}</ErrorMessage>
-        )}
-      </Label>
+      </Form.Item>
     </>
   );
 };

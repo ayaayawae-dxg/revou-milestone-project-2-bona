@@ -20,6 +20,7 @@ const NavButton = ({ current, steps, next, prev }: Props) => {
           icon={<ArrowLeftOutlined />}
           data-testid="prev"
           type="primary"
+          tabIndex={-1}
           onClick={prev}
         />
       ) : (

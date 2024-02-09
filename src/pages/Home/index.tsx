@@ -1,4 +1,4 @@
-import React, { lazy, useState } from "react";
+import React, { lazy, useEffect, useState } from "react";
 import { Button, Form, Steps } from "antd";
 import { FormProvider, useForm } from "react-hook-form";
 import { useSetRecoilState } from "recoil";
@@ -15,7 +15,9 @@ const NavButton = lazy(() => import("./components/molecules/NavButton"));
 
 const Home = () => {
   const navigate = useNavigate();
-  const methods = useForm<DRegistration>();
+  const methods = useForm<DRegistration>({
+    criteriaMode: "all"
+  });
   const [current, setCurrent] = useState<number>(0);
   const setRegistrationValue = useSetRecoilState(registrationState);
   const { t } = useTranslation();

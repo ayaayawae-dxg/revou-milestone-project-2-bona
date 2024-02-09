@@ -8,3 +8,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #03001e;
 }
+
+.ant-select-selection-search-input {
+  font-size: 1.25rem;
+}

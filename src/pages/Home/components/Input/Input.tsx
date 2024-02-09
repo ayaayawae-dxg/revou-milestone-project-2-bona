@@ -9,6 +9,7 @@ type Props = {
 const Input = ({ placeholder, name, ...rest }: Props) => {
   return (
     <CustomInput
+      {...rest}
       style={{
         color: "white",
         borderRadius: "0px",
@@ -18,7 +19,6 @@ const Input = ({ placeholder, name, ...rest }: Props) => {
       variant="borderless"
       placeholder={placeholder}
       id={name}
-      {...rest}
     />
   );
 };

@@ -1,11 +1,11 @@
 import { Controller, useFormContext } from "react-hook-form";
 import moment from "moment";
+import { useTranslation } from "react-i18next";
+import { Form } from "antd";
 
 import Input from "../Input/Input";
 import DatePicker from "../Input/DatePicker";
-import Label from "../Input/Label";
 import ErrorMessage from "../Input/ErrorMessage";
-import { useTranslation } from "react-i18next";
 
 const PersonalInformation = () => {
   const { t } = useTranslation();
@@ -17,7 +17,15 @@ const PersonalInformation = () => {
 
   return (
     <>
-      <Label label={t("form.page.1.field.1")} name={"firstName"}>
+      <Form.Item
+        label={t("form.page.1.field.1")}
+        name={"firstName"}
+        extra={
+          errors.firstName && (
+            <ErrorMessage>{`${errors.firstName.message}`}</ErrorMessage>
+          )
+        }
+      >
         <Controller
           name="firstName"
           control={control}
@@ -30,12 +38,17 @@ const PersonalInformation = () => {
             />
           )}
         />
-        {errors.firstName && (
-          <ErrorMessage>{`${errors.firstName.message}`}</ErrorMessage>
-        )}
-      </Label>
+      </Form.Item>
 
-      <Label label={t("form.page.1.field.2")} name={"email"}>
+      <Form.Item
+        label={t("form.page.1.field.2")}
+        name={"email"}
+        extra={
+          errors.email && (
+            <ErrorMessage>{`${errors.email.message}`}</ErrorMessage>
+          )
+        }
+      >
         <Controller
           name="email"
           control={control}
@@ -54,24 +67,31 @@ const PersonalInformation = () => {
             />
           )}
         />
-        {errors.email && (
-          <ErrorMessage>{`${errors.email.message}`}</ErrorMessage>
-        )}
-      </Label>
+      </Form.Item>
 
-      <Label label={t("form.page.1.field.3")} name={"birthDate"}>
+      <Form.Item
+        label={t("form.page.1.field.3")}
+        name={"birthDate"}
+        extra={
+          errors.birthDate && (
+            <ErrorMessage>{`${errors.birthDate.message}`}</ErrorMessage>
+          )
+        }
+      >
         <Controller
           name="birthDate"
           control={control}
           rules={{
             validate: {
               isBeforeNow: (value) => {
-                const now = moment();
-                const birthDate = moment(value.toString());
-                if (birthDate.isAfter(now)) {
-                  return t("form.page.1.field.3.isBeforeNow");
+                if (value) {
+                  const now = moment();
+                  const birthDate = moment(value.toString());
+                  if (birthDate.isAfter(now)) {
+                    return t("form.page.1.field.3.isBeforeNow");
+                  }
+                  return true;
                 }
-                return true;
               },
             },
             required: t("form.page.1.field.3.required"),
@@ -84,10 +104,7 @@ const PersonalInformation = () => {
             />
           )}
         />
-        {errors.birthDate && (
-          <ErrorMessage>{`${errors.birthDate.message}`}</ErrorMessage>
-        )}
-      </Label>
+      </Form.Item>
     </>
   );
 };

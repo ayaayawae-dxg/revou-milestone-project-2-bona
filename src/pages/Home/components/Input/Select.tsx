@@ -20,6 +20,7 @@ const Select = ({ placeholder, options, name, onChange, ...rest }: Props) => {
         borderBottom: "1px solid white",
         fontSize: "1.25rem",
       }}
+      showSearch
       variant="borderless"
       placeholder={placeholder}
       options={options}
