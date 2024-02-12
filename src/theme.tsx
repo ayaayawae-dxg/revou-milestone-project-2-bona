@@ -26,6 +26,9 @@ const theme = {
     },
     Form: {
       labelFontSize: 20
+    },
+    Result: {
+      titleFontSize: 36
     }
   },
 }
