@@ -14,6 +14,7 @@ const Footer = () => {
       }}
     >
       <Image
+        loading="lazy"
         height={"100%"}
         src={DigicampLogo}
       />

@@ -11,7 +11,7 @@ import PersonalInformation from "./components/Form/PersonalInformation";
 import AddressInformation from "./components/Form/AddressInformation";
 import AccountInformation from "./components/Form/AccountInformation";
 
-const NavButton = lazy(() => import("./components/molecules/NavButton"));
+const NavButton = lazy(() => import("./components/Molecules/NavButton"));
 
 const Home = () => {
   const navigate = useNavigate();

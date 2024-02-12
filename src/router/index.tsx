@@ -1,5 +1,5 @@
 import { GeneralLayout } from "layouts";
-import { Home, Dashboard } from "pages";
+import { Home, Dashboard, Login } from "pages";
 import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -16,6 +16,10 @@ const router = createBrowserRouter([
         element: <Dashboard />,
       },
     ],
+  },
+  {
+    path: "login",
+    element: <Login />,
   },
 ]);
 

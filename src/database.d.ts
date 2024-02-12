@@ -12,3 +12,8 @@ interface DRegistration {
   password: string;
   rePassword: string;
 };
+
+interface DLogin {
+  username: string;
+  password: string;
+};
