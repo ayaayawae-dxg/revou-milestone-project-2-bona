@@ -29,6 +29,9 @@ const theme = {
     },
     Result: {
       titleFontSize: 36
+    },
+    Message: {
+      contentBg: "#313256",
     }
   },
 }

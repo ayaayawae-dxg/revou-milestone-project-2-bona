@@ -10,6 +10,7 @@ import { DRegistration } from "database";
 import PersonalInformation from "./components/Form/PersonalInformation";
 import AddressInformation from "./components/Form/AddressInformation";
 import AccountInformation from "./components/Form/AccountInformation";
+import { hashPassword } from "utils/helper";
 
 const NavButton = lazy(() => import("./components/Molecules/NavButton"));
 
@@ -50,8 +51,9 @@ const Home = () => {
   const items = steps.map((item) => ({ key: item.title, title: item.title }));
 
   const onSubmit = (data: DRegistration) => {
-    setRegistrationValue(data);
-    localStorage.setItem("registration", JSON.stringify(data));
+    const hashedData = { ...data, password: hashPassword(data.password), rePassword: hashPassword(data.rePassword) };
+    setRegistrationValue(hashedData);
+    localStorage.setItem("registration", JSON.stringify(hashedData));
     navigate("dashboard");
   };
 
