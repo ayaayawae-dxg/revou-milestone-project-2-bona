@@ -32,7 +32,13 @@ const theme = {
     },
     Message: {
       contentBg: "#313256",
-    }
+    },
+    Table: {
+      headerBg: "#313256",
+      rowHoverBg: "#313256",
+      cellFontSize: 16,
+      borderColor: "#00011e"
+    },
   },
 }
 

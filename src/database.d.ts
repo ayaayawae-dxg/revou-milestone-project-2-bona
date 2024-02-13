@@ -17,3 +17,9 @@ interface DLogin {
   username: string;
   password: string;
 };
+
+interface DStore {
+  key: string;
+  asset: string;
+  quantity: number;
+};

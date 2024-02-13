@@ -1,3 +1,4 @@
-import GeneralLayout from "./GeneralLayout.tsx";
+import GeneralLayout from "./GeneralLayout";
+import AuthenticatedLayout from "./AuthenticatedLayout";
 
-export { GeneralLayout };
+export { GeneralLayout, AuthenticatedLayout };

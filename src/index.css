@@ -12,3 +12,7 @@ body {
 .ant-select-selection-search-input {
   font-size: 1.25rem;
 }
+
+.ant-table-cell {
+  background-color: #313256;
+}

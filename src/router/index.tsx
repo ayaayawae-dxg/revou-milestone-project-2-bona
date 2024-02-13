@@ -1,10 +1,10 @@
-import { GeneralLayout } from "layouts";
-import { Home, Dashboard, Login } from "pages";
+import { AuthenticatedLayout, GeneralLayout } from "layouts";
+import { Home, Dashboard, Login, Store } from "pages";
 import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "",
     element: <GeneralLayout />,
     children: [
       {
@@ -14,6 +14,16 @@ const router = createBrowserRouter([
       {
         path: "dashboard",
         element: <Dashboard />,
+      },
+    ],
+  },
+  {
+    path: "store",
+    element: <AuthenticatedLayout />,
+    children: [
+      {
+        path: "",
+        element: <Store />,
       },
     ],
   },
