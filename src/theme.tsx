@@ -39,6 +39,9 @@ const theme = {
       cellFontSize: 16,
       borderColor: "#00011e"
     },
+    Pagination: {
+      itemActiveBg: "#313256"
+    }
   },
 }
 
