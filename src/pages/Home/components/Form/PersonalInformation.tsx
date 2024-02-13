@@ -2,6 +2,7 @@ import { Controller, useFormContext } from "react-hook-form";
 import moment from "moment";
 import { useTranslation } from "react-i18next";
 import { Form } from "antd";
+import dayjs from "dayjs";
 
 import Input from "../Input/Input";
 import DatePicker from "../Input/DatePicker";
@@ -96,13 +97,19 @@ const PersonalInformation = () => {
             },
             required: t("form.page.1.field.3.required"),
           }}
-          render={({ field: { ref, name, ...field } }) => (
-            <DatePicker
-              name={name}
-              placeholder={t("form.page.1.field.3")}
-              {...field}
-            />
-          )}
+          render={({ field: { ref, name, ...field } }) => {
+            const tomorrow = moment().add(1, "days").toString();
+
+            return (
+              <DatePicker
+                name={name}
+                placeholder={t("form.page.1.field.3")}
+                disabledDate={(current) => current.isAfter(tomorrow)}
+                defaultPickerValue={dayjs(dayjs().subtract(23, "years"))}
+                {...field}
+              />
+            );
+          }}
         />
       </Form.Item>
     </>
