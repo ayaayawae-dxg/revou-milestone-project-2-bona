@@ -53,5 +53,11 @@
   "store.input.field.2": "Quantity",
   "store.input.field.2.required": "Quantity is Required",
   "store.input.field.2.min": "Quantity must be greater than 0",
-  "store.submit": "Add"
+  "store.submit": "Add",
+
+  "store.data.column.1.label": "Asset",
+  "store.data.column.2.label": "Quantity",
+  "store.data.column.3.label": "Action",
+
+  "auth.header": "Store"
 }

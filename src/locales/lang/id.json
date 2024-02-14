@@ -53,5 +53,11 @@
   "store.input.field.2": "Kuantitas",
   "store.input.field.2.required": "Kuantitas wajib diisi",
   "store.input.field.2.min": "Kuantitas harus lebih dari 0",
-  "store.submit": "Tambah"
+  "store.submit": "Tambah",
+
+  "store.data.column.1.label": "Aset",
+  "store.data.column.2.label": "Kuantitas",
+  "store.data.column.3.label": "Aksi",
+
+  "auth.header": "Toko"
 }

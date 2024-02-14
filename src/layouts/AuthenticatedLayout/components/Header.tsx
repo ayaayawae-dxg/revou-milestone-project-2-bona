@@ -1,8 +1,11 @@
 import { Layout } from "antd";
+import { useTranslation } from "react-i18next";
 
 const { Header: CustomHeader } = Layout;
 
 const Header = () => {
+  const { t } = useTranslation();
+
   return (
     <CustomHeader
       style={{
@@ -16,7 +19,7 @@ const Header = () => {
         position: "relative",
       }}
     >
-      Store
+      {t("auth.header")}
     </CustomHeader>
   );
 };
