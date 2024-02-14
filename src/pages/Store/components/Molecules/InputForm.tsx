@@ -2,7 +2,7 @@ import { Button, Form } from "antd";
 import { DStore } from "database";
 import { Controller, useForm } from "react-hook-form";
 import { useSetRecoilState } from "recoil";
-import { storeState } from "store";
+import { storeState } from "../../../../store";
 
 import ErrorMessage from "../Form/ErrorMessage";
 import Input from "../Form/Input";
