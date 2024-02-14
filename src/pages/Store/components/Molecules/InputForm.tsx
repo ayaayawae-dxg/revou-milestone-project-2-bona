@@ -1,13 +1,16 @@
 import { Button, Form } from "antd";
 import { DStore } from "database";
 import { Controller, useForm } from "react-hook-form";
-import ErrorMessage from "../Form/ErrorMessage";
-import Input from "../Form/Input";
-import InputNumber from "../Form/InputNumber";
 import { useSetRecoilState } from "recoil";
 import { storeState } from "store";
 
+import ErrorMessage from "../Form/ErrorMessage";
+import Input from "../Form/Input";
+import InputNumber from "../Form/InputNumber";
+import { useTranslation } from "react-i18next";
+
 const InputForm = () => {
+  const { t } = useTranslation();
   const setStoreState = useSetRecoilState(storeState);
   const {
     handleSubmit,
@@ -21,7 +24,7 @@ const InputForm = () => {
     const newAsset = {
       ...e,
       key: crypto.randomUUID(),
-    }
+    };
     setStoreState((prev) => [...prev, newAsset]);
   };
 
@@ -33,7 +36,7 @@ const InputForm = () => {
         style={{ width: "100%" }}
       >
         <Form.Item
-          label={"Asset"}
+          label={t("store.input.field.1")}
           name={"asset"}
           extra={
             errors.asset && (
@@ -44,15 +47,19 @@ const InputForm = () => {
           <Controller
             name="asset"
             control={control}
-            rules={{ required: "Asset is Required" }}
+            rules={{ required: t("store.input.field.1.required") }}
             render={({ field: { ref, name, ...field } }) => (
-              <Input {...field} name={name} placeholder={"Asset"} />
+              <Input
+                {...field}
+                name={name}
+                placeholder={t("store.input.field.1")}
+              />
             )}
           />
         </Form.Item>
 
         <Form.Item
-          label={"Quantity"}
+          label={t("store.input.field.2")}
           name={"quantity"}
           extra={
             errors.quantity && (
@@ -64,16 +71,11 @@ const InputForm = () => {
             name="quantity"
             control={control}
             rules={{
-              required: "Quantity is Required",
-              min: { value: 1, message: "Quantity must be greater than 0" },
+              required: t("store.input.field.2.required"),
+              min: { value: 1, message: t("store.input.field.2.min") },
             }}
             render={({ field: { ref, name, ...field } }) => (
-              <InputNumber
-                {...field}
-                min={1}
-                name={name}
-                placeholder={"Quantity"}
-              />
+              <InputNumber {...field} name={name} placeholder={t("store.input.field.2")} />
             )}
           />
         </Form.Item>
@@ -84,7 +86,7 @@ const InputForm = () => {
           size="large"
           style={{ width: "100%" }}
         >
-          Add
+          {t("store.submit")}
         </Button>
       </Form>
     </>

@@ -46,5 +46,12 @@
   "login.field.2" : "Password",
   "login.field.2.required" : "Password is Required",
   "login.submit.failed" : "Username or password is incorrect",
-  "login.submit" : "Login"
+  "login.submit" : "Login",
+
+  "store.input.field.1": "Asset",
+  "store.input.field.1.required": "Asset is Required",
+  "store.input.field.2": "Quantity",
+  "store.input.field.2.required": "Quantity is Required",
+  "store.input.field.2.min": "Quantity must be greater than 0",
+  "store.submit": "Add"
 }

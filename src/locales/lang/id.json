@@ -46,5 +46,12 @@
   "login.field.2" : "Kata Sandi",
   "login.field.2.required" : "Kata Sandi wajib diisi",
   "login.submit.failed" : "Nama Pengguna atau Kata Sandi tidak benar",
-  "login.submit" : "Masuk"
+  "login.submit" : "Masuk",
+
+  "store.input.field.1": "Aset",
+  "store.input.field.1.required": "Aset wajib diisi",
+  "store.input.field.2": "Kuantitas",
+  "store.input.field.2.required": "Kuantitas wajib diisi",
+  "store.input.field.2.min": "Kuantitas harus lebih dari 0",
+  "store.submit": "Tambah"
 }
