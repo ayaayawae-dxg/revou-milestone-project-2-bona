@@ -19,4 +19,10 @@ const storeState = atom<DStore[]>({
   }],
 });
 
-export { registrationState, storeState };
+const authState = atom({
+  key: 'auth',
+  default: JSON.parse(localStorage.getItem('user') as string),
+});
+
+
+export { registrationState, storeState, authState };

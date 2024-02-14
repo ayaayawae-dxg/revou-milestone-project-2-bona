@@ -10,11 +10,14 @@ import Password from "../Form/Password";
 
 import { compareHashPassword } from "utils/helper";
 import { useTranslation } from "react-i18next";
+import { useSetRecoilState } from "recoil";
+import { authState } from "store";
 
 const LoginCard = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [messageApi, contextHolder] = message.useMessage();
+  const setAuth = useSetRecoilState(authState);
 
   const {
     handleSubmit,
@@ -37,6 +40,8 @@ const LoginCard = () => {
       );
 
       if (isUsernameMatch && isPasswordMatch) {
+        setAuth(e);
+        localStorage.setItem("user", JSON.stringify(e.username));
         navigate("/store");
       } else {
         messageApi.open({

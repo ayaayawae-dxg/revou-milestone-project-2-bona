@@ -1,12 +1,27 @@
 import { Col, Image, Row } from "antd";
+import { useRecoilValue } from "recoil";
+import { authState } from "store";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+
 import DigicampLogo from "../../assets/digicamp-logo-white.png";
+
 import LoginCard from "./components/Molecules/LoginCard";
 import ChangeLanguange from "components/ChangeLanguange";
 
 const Login = () => {
+  const auth = useRecoilValue(authState);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (auth) {
+      navigate("/store")
+    }
+  }, [])
+
   return (
     <>
-    <ChangeLanguange />
+      <ChangeLanguange />
       <Row style={{ minHeight: "100vh" }} justify={"center"} align="middle">
         <Col
           xs={{ flex: "none", span: 0 }}

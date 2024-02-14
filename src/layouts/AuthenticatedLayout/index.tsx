@@ -1,5 +1,8 @@
 import { Layout } from "antd";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { authState } from "store";
+import { useEffect } from "react";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -8,6 +11,15 @@ import ChangeLanguange from "components/ChangeLanguange";
 const { Content } = Layout;
 
 const AuthenticatedLayout = () => {
+  const auth = useRecoilValue(authState);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!auth) {
+      navigate("/login");
+    }
+  }, [])
+
   return (
     <>
       <ChangeLanguange />
