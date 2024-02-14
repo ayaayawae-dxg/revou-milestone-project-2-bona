@@ -39,5 +39,12 @@
 
   "dashboard.title": "Registration Completed !",
   "dashboard.subTitle": "Hello",
-  "dashboard.subTitle.waitMessage": "You will be redirected to Login Page. Please Wait a Moment..."
+  "dashboard.subTitle.waitMessage": "You will be redirected to Login Page. Please Wait a Moment...",
+
+  "login.field.1" : "Username",
+  "login.field.1.required" : "Username is Required",
+  "login.field.2" : "Password",
+  "login.field.2.required" : "Password is Required",
+  "login.submit.failed" : "Username or password is incorrect",
+  "login.submit" : "Login"
 }

@@ -9,9 +9,11 @@ import ErrorMessage from "../Form/ErrorMessage";
 import Password from "../Form/Password";
 
 import { compareHashPassword } from "utils/helper";
+import { useTranslation } from "react-i18next";
 
 const LoginCard = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [messageApi, contextHolder] = message.useMessage();
 
   const {
@@ -39,13 +41,13 @@ const LoginCard = () => {
       } else {
         messageApi.open({
           type: "error",
-          content: "Username or password is incorrect",
+          content: t("login.submit.failed"),
         });
       }
     } else {
       messageApi.open({
         type: "error",
-        content: "Username or password is incorrect",
+        content: t("login.submit.failed"),
       });
     }
   };
@@ -78,12 +80,12 @@ const LoginCard = () => {
             <Controller
               name="username"
               control={control}
-              rules={{ required: "Username is Required" }}
+              rules={{ required: t("login.field.1.required") }}
               render={({ field: { ref, name, ...field } }) => (
                 <Input
                   {...field}
                   name={name}
-                  placeholder={"Username"}
+                  placeholder={t("login.field.1")}
                   prefix={<UserOutlined />}
                 />
               )}
@@ -101,12 +103,12 @@ const LoginCard = () => {
             <Controller
               name="password"
               control={control}
-              rules={{ required: "Password is Required" }}
+              rules={{ required: t("login.field.2.required") }}
               render={({ field: { ref, name, ...field } }) => (
                 <Password
                   {...field}
                   name={name}
-                  placeholder={"Password"}
+                  placeholder={t("login.field.2")}
                   prefix={<LockOutlined />}
                 />
               )}
@@ -119,7 +121,7 @@ const LoginCard = () => {
             style={{ width: "100%", marginBlock: "1rem" }}
             size="large"
           >
-            Login
+            {t("login.submit")}
           </Button>
         </Card>
       </Form>

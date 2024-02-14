@@ -39,5 +39,12 @@
 
   "dashboard.title": "Pendaftaran Selesai!",
   "dashboard.subTitle": "Halo",
-  "dashboard.subTitle.waitMessage": "Anda akan diarahkan ke halaman Login. Mohon tunggu..."
+  "dashboard.subTitle.waitMessage": "Anda akan diarahkan ke halaman Login. Mohon tunggu...",
+
+  "login.field.1" : "Nama Pengguna",
+  "login.field.1.required" : "Nama Pengguna wajib diisi",
+  "login.field.2" : "Kata Sandi",
+  "login.field.2.required" : "Kata Sandi wajib diisi",
+  "login.submit.failed" : "Nama Pengguna atau Kata Sandi tidak benar",
+  "login.submit" : "Masuk"
 }
