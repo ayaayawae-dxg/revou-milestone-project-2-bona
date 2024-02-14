@@ -21,7 +21,7 @@ jest.mock("react-i18next", () => ({
   },
 }));
 
-describe("LoginCard", () => {
+describe("Input Asset", () => {
   beforeAll(() => {
     Object.defineProperty(window, "matchMedia", {
       writable: true,

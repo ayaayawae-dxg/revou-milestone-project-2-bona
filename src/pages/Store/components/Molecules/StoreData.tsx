@@ -3,7 +3,7 @@ import { Table, Button } from "antd";
 import { DStore } from "database";
 import { useTranslation } from "react-i18next";
 import { useRecoilState } from "recoil";
-import { storeState } from "store";
+import { storeState } from "../../../../store";
 
 const { Column } = Table;
 
