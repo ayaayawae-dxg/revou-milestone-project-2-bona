@@ -9,6 +9,7 @@ type Props = {
 const Password = ({ placeholder, name, ...rest }: Props) => {
   return (
     <CustomInput.Password
+      {...rest}
       style={{
         color: "white",
         borderRadius: "0px",
@@ -18,7 +19,9 @@ const Password = ({ placeholder, name, ...rest }: Props) => {
       variant="borderless"
       placeholder={placeholder}
       id={name}
-      {...rest}
+      name={name}
+      aria-label={name}
+      data-testid={name}
     />
   );
 };

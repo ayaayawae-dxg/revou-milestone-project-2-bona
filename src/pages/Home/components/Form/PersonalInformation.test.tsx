@@ -3,10 +3,7 @@ import userEvent from "@testing-library/user-event";
 import PersonalInformation from "./PersonalInformation";
 import { FormProvider, useForm } from "react-hook-form";
 import { Form } from "antd";
-import dayjs from "dayjs";
 import { DRegistration } from "database";
-import { act } from "react-dom/test-utils";
-import { t } from "i18next";
 
 jest.mock("react-i18next", () => ({
   useTranslation: () => {
@@ -23,26 +20,13 @@ jest.mock("react-i18next", () => ({
   },
 }));
 
-// jest.mock("react-hook-form", () => ({
-//   ...jest.requireActual("react-hook-form"),
-//   Controller: () => [],
-//   useFormContext: jest.fn(() => ({
-//     control: jest.fn(),
-//     formState: {
-//       errors: jest.fn(),
-//     },
-//     watch: jest.fn(),
-//   })),
-//   useForm: jest.fn(() => ({
-//     handleSubmit: jest.fn(),
-//   })),
-// }));
-
 const WrapperForm = ({ children }: any) => {
   const methods = useForm<DRegistration>();
+  const onSubmitMock = jest.fn();
+
   return (
     <FormProvider {...methods}>
-      <Form>{children}</Form>
+      <Form onFinish={methods.handleSubmit(onSubmitMock)}>{children}</Form>
     </FormProvider>
   );
 };
@@ -76,36 +60,28 @@ describe("PersonalInformation", () => {
   });
 
   it("should validate user input fields", async () => {
-    render(
+    const { getByRole, getByText } = render(
       <WrapperForm>
         <PersonalInformation />
         <button type="submit">Submit</button>
       </WrapperForm>
-    )
+    );
 
-    const firstNameInput = screen.getByLabelText("form.page.1.field.1");
-    const emailInput = screen.getByLabelText("form.page.1.field.2");
-    const dateBirthInput = screen.getByLabelText("form.page.1.field.3");
-    const buttonSubmit = screen.getByRole("button", { name: /submit/i });
+    const firstNameInput = getByRole("textbox", { name: /firstname/i })
+    const emailInput = getByRole("textbox", { name: /email/i })
+    const dateBirthInput = getByRole("textbox", { name: /birthDate/i })
+    const buttonSubmit = getByText("Submit")
 
     fireEvent.input(firstNameInput, { target: { value: "" } });
     fireEvent.input(emailInput, { target: { value: "" } });
     fireEvent.input(dateBirthInput, { target: { value: "" } });
 
-    fireEvent.submit(buttonSubmit)
+    fireEvent.submit(buttonSubmit);
 
     await waitFor(() => {
-      setTimeout(() => {
-        expect(
-          screen.findByText("form.page.1.field.1.required")
-        ).toBeInTheDocument();
-        expect(
-          screen.findByText("form.page.1.field.2.required")
-        ).toBeInTheDocument();
-        expect(
-          screen.findByText("form.page.1.field.3.required")
-        ).toBeInTheDocument();
-      }, 1000)
-    })
+      expect(screen.queryByText("form.page.1.field.1.required")).toBeInTheDocument();
+      expect(screen.queryByText("form.page.1.field.2.required")).toBeInTheDocument();
+      expect(screen.queryByText("form.page.1.field.3.required")).toBeInTheDocument();
+    });
   });
 });

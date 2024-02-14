@@ -9,6 +9,7 @@ type Props = {
 const TextArea = ({ placeholder, name, ...rest }: Props) => {
   return (
     <CustomInput.TextArea
+      {...rest}
       style={{
         color: "white",
         borderRadius: "0px",
@@ -18,7 +19,9 @@ const TextArea = ({ placeholder, name, ...rest }: Props) => {
       variant="borderless"
       placeholder={placeholder}
       id="name"
-      {...rest}
+      aria-label={name}
+      data-testid={name}
+      name={name}
     />
   );
 };

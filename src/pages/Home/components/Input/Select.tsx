@@ -14,6 +14,7 @@ type Props = {
 const Select = ({ placeholder, options, name, onChange, ...rest }: Props) => {
   return (
     <CustomSelect
+      {...rest}
       style={{
         color: "white",
         borderRadius: "0px",
@@ -26,7 +27,8 @@ const Select = ({ placeholder, options, name, onChange, ...rest }: Props) => {
       options={options}
       onChange={onChange}
       id={name}
-      {...rest}
+      aria-label={name}
+      data-testid={name}
     />
   );
 };
