@@ -8,10 +8,10 @@ import Input from "../Form/Input";
 import ErrorMessage from "../Form/ErrorMessage";
 import Password from "../Form/Password";
 
-import { compareHashPassword } from "utils/helper";
+import { compareHashPassword } from "../../../../utils/helper";
 import { useTranslation } from "react-i18next";
 import { useSetRecoilState } from "recoil";
-import { authState } from "store";
+import { authState } from "../../../../store";
 
 const LoginCard = () => {
   const navigate = useNavigate();
