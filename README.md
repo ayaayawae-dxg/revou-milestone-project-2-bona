@@ -1,4 +1,4 @@
-# Mini Project Assignment 2 for Introduction to React Module
+# 2nd Milestone Project for Revou Web Development Module
 
 ## Run Project
 
@@ -13,3 +13,7 @@
 1. Ant Design - https://ant.design/
 2. MomentJS - https://momentjs.com/
 3. React Hook Form - https://www.react-hook-form.com/
+4. DayJS - https://day.js.org/
+5. Jest - https://jestjs.io/
+6. i18next - https://www.i18next.com/
+7. recoil - https://recoiljs.org/
